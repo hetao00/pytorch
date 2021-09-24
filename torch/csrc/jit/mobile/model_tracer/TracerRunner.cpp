@@ -202,7 +202,6 @@ TracerResult trace_run(const std::string& input_module_path) {
   std::set<std::string> root_ops, traced_operators, enabled_backends;
   torch::jit::mobile::KernelDTypeTracer::kernel_tags_type called_kernel_tags;
 
-
   using torch::jit::MobileModuleLoadOptions;
 
   // run with QNNPACK
@@ -220,7 +219,7 @@ TracerResult trace_run(const std::string& input_module_path) {
       root_ops, traced_operators, called_kernel_tags, enabled_backends};
 
   if (tracer_result.traced_operators.size() <=
-          always_included_traced_ops.size()) {
+      always_included_traced_ops.size()) {
     throw std::runtime_error(
         "Error traced_operators size: " +
         std::to_string(tracer_result.traced_operators.size()) +
